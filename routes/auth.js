@@ -71,7 +71,7 @@ function captchaRegister(req, res, next) {
 //_______________________ ┏ Router ┓ _______________________\\
 
 
-router.get('/login', recaptcha.middleware.render, (req, res) => {
+router.get('/login', (req, res) => {
     if (req.isAuthenticated()) {
         res.redirect("/docs");
     } else {
