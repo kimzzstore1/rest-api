@@ -84,7 +84,7 @@ router.get('/login', (req, res) => {
 });
 
 
-router.post('/login', recaptcha.middleware.verify, captchaLogin, (req, res, next) => {
+router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         failureRedirect: '/login',
         successRedirect: '/docs',
