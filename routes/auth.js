@@ -92,7 +92,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
-router.get('/signup', recaptcha.middleware.render, (req, res) => {
+router.get('/signup', (req, res) => {
     if (req.isAuthenticated()) {
         res.redirect("/docs");
     } else {
@@ -103,7 +103,7 @@ router.get('/signup', recaptcha.middleware.render, (req, res) => {
     }
 });
 
-router.post('/signup', recaptcha.middleware.verify, captchaRegister, async(req, res) => {
+router.post('/signup', async(req, res) => {
     const { email, username, password, confirmpassword } = req.body;
     var createpw = new passwordValidator();
     createpw.is().min(8).is().max(30).has().uppercase().has().lowercase().has().digits().has().not().spaces().is().not().oneOf(['Passw0rd', 'Password123']);
